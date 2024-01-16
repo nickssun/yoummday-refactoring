@@ -13,7 +13,7 @@ require_once 'vendor/autoload.php';
 
 const PROJECT_PATH = __DIR__;
 
-$config = Config::create(__DIR__ . '/config.yml');
+$config = Config::create(__DIR__ . '/config.json');
 
 $classLookup = (new ClassLookup())
     ->singleton($config)

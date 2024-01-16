@@ -162,16 +162,16 @@
         },
         {
             "name": "progphil1337/php-config",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/progphil1337/php-config.git",
-                "reference": "ba26e3cd629b48ae5c4bac9e3a3c53260df1ddfb"
+                "reference": "256a13f82fcc2304747b8b968e502e4023286f72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/progphil1337/php-config/zipball/ba26e3cd629b48ae5c4bac9e3a3c53260df1ddfb",
-                "reference": "ba26e3cd629b48ae5c4bac9e3a3c53260df1ddfb",
+                "url": "https://api.github.com/repos/progphil1337/php-config/zipball/256a13f82fcc2304747b8b968e502e4023286f72",
+                "reference": "256a13f82fcc2304747b8b968e502e4023286f72",
                 "shasum": ""
             },
             "require": {
@@ -198,9 +198,9 @@
             "description": "Config interpreter",
             "support": {
                 "issues": "https://github.com/progphil1337/php-config/issues",
-                "source": "https://github.com/progphil1337/php-config/tree/v1.0.0"
+                "source": "https://github.com/progphil1337/php-config/tree/v1.0.1"
             },
-            "time": "2022-10-24T07:42:50+00:00"
+            "time": "2024-01-16T12:24:01+00:00"
         },
         {
             "name": "progphil1337/php-di",

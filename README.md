@@ -1,7 +1,6 @@
 # Requirements
 - php 8.1
 - composer
-- php yaml extension
 
 # Installation
 ```shell
