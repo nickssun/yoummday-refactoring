@@ -42,14 +42,14 @@ class PermissionHandler implements HandlerInterface
                 }
             }
 
-            $a = false;
+            $a = 0;
             foreach ($token["permissions"] as $p) {
                 if ($p == $np) {
-                    $a = true;
+                    $a = $a + 1;
                 }
             }
 
-            if ($a) {
+            if ($a > 0) {
                 return new JSONResponse(array("permission" => true), 400);
             } else {
                 return new JSONResponse(array('permission' => false), 400);
