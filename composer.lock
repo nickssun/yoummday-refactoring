@@ -248,12 +248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/progphil1337/simple-react-app.git",
-                "reference": "b6ddff92dff47af7d8fdf28bf44873bbf530e958"
+                "reference": "b1b0c6a156533260f9e257b586be57324b048040"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/progphil1337/simple-react-app/zipball/b6ddff92dff47af7d8fdf28bf44873bbf530e958",
-                "reference": "b6ddff92dff47af7d8fdf28bf44873bbf530e958",
+                "url": "https://api.github.com/repos/progphil1337/simple-react-app/zipball/b1b0c6a156533260f9e257b586be57324b048040",
+                "reference": "b1b0c6a156533260f9e257b586be57324b048040",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +286,7 @@
                 "issues": "https://github.com/progphil1337/simple-react-app/issues",
                 "source": "https://github.com/progphil1337/simple-react-app/tree/main"
             },
-            "time": "2024-01-16T11:40:45+00:00"
+            "time": "2024-01-17T10:04:33+00:00"
         },
         {
             "name": "psr/http-message",

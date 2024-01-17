@@ -24,7 +24,7 @@ class PermissionHandler implements HandlerInterface
 
     }
 
-    public function process(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface
+    public function __invoke(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface
     {
         $np = "read";
 
@@ -42,7 +42,6 @@ class PermissionHandler implements HandlerInterface
                 }
             }
 
-            $a = 0;
             foreach ($token["permissions"] as $p) {
                 if ($p == $np) {
                     $a = $a + 1;
