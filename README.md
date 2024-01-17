@@ -16,3 +16,8 @@ Expected output:
 [INFO] Registering GET /has_permission/{token}
 [INFO] Server running on 127.0.0.1:1337
 ```
+
+# Testing
+```shell
+$ php vendor/bin/phpunit Test
+```
