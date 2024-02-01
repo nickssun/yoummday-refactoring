@@ -7,7 +7,7 @@ use App\Provider\TokenDataProvider;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class PermissionService
+class PermissionService implements PermissionServiceInterface
 {
     public function __construct(private readonly HttpClientInterface $httpClient, private readonly LoggerInterface $logger)
     {
