@@ -37,20 +37,7 @@ class PermissionHandler implements HandlerInterface
             return new JSONResponse(["message" => "{token} parameter is mandatory"], Response::HTTP_BAD_REQUEST);
         }
 
-
-        $dataProvider = new TokenDataProvider();
-
-        $tokens = $dataProvider->getTokens();
-        $token = null;
-
-        foreach ($tokens as $t) {
-            //TODO add strict checks
-            if ($t["token"] == $requestToken) {
-                $token = $t;
-            }
-        }
-
-        $permissions = $token["permissions"] ?? [];
+        $permissions = $this->permissionService->getTokenPermissions($requestToken);
 
         if ($this->permissionService->hasReadAccess($permissions)) {
             return new JSONResponse($permissions, Response::HTTP_OK);
