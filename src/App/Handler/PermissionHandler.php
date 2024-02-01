@@ -40,36 +40,36 @@ class PermissionHandler implements HandlerInterface
         }
 
 
-            $dataProvider = new TokenDataProvider();
+        $dataProvider = new TokenDataProvider();
 
-            $tokens = $dataProvider->getTokens();
-            $token = null;
+        $tokens = $dataProvider->getTokens();
+        $token = null;
 
-            foreach ($tokens as $t) {
-                //TODO add strict checks
-                if ($t["token"] == $requestToken) {
-                    $token = $t;
-                }
+        foreach ($tokens as $t) {
+            //TODO add strict checks
+            if ($t["token"] == $requestToken) {
+                $token = $t;
             }
+        }
 
-            foreach ($token["permissions"] as $p) {
-                //TODO add strict checks, descriptive properties names
-                if ($p == $np) {
-                    //TODO initialize $a
-                    $a = $a + 1;
-                }
+        foreach ($token["permissions"] as $p) {
+            //TODO add strict checks, descriptive properties names
+            if ($p == $np) {
+                //TODO initialize $a
+                $a = $a + 1;
             }
+        }
 
-            //TODO $a could be undefined here
-            if ($a > 0) {
+        //TODO $a could be undefined here
+        if ($a > 0) {
 
-                //TODO add common client response, set proper HTTP status codes, list permissions
-                $permission = [];
-                return new JSONResponse($permission, Response::HTTP_OK);
-            } else {
-                //TODO -
-                return new JSONResponse([], Response::HTTP_UNAUTHORIZED);
-            }
+            //TODO add common client response, set proper HTTP status codes, list permissions
+            $permission = [];
+            return new JSONResponse($permission, Response::HTTP_OK);
+        } else {
+            //TODO -
+            return new JSONResponse([], Response::HTTP_UNAUTHORIZED);
+        }
 
     }
 }
