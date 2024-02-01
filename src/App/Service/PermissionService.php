@@ -104,5 +104,4 @@ class PermissionService implements PermissionServiceInterface
     {
         return $this->hasAccess($permissions, Permission::READ);
     }
-
 }

@@ -19,5 +19,4 @@ interface PermissionServiceInterface
     public function hasAccess(array $permissions, string $checkType): bool;
 
     public function hasReadAccess(array $permissions): bool;
-
 }

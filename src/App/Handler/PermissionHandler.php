@@ -16,7 +16,6 @@ use ProgPhil1337\SimpleReactApp\HTTP\Routing\RouteParameters;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-
 #[Route(httpMethod: HttpMethod::GET, uri: '/has_permission/{token}')]
 class PermissionHandler implements HandlerInterface
 {
@@ -25,8 +24,7 @@ class PermissionHandler implements HandlerInterface
      */
     public function __construct(
         private readonly PermissionService $permissionService
-    )
-    {
+    ) {
     }
 
     public function __invoke(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface
