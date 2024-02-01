@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Handler;
 
 use App\Provider\TokenDataProvider;
+use App\Utils\Token;
 use ProgPhil1337\SimpleReactApp\HTTP\Response\JSONResponse;
 use ProgPhil1337\SimpleReactApp\HTTP\Response\ResponseInterface;
 use ProgPhil1337\SimpleReactApp\HTTP\Routing\Attribute\Route;
@@ -32,11 +33,12 @@ class PermissionHandler implements HandlerInterface
         $np = "read";
 
         //GET requested Token
-        $tId = $parameters->get("token", "kein_token");
+        $requestToken = $parameters->get("token", Token::MISSING);
 
+        if (Token::MISSING === $requestToken) {
+            return new JSONResponse(["message" => "{token} parameter is mandatory"], Response::HTTP_BAD_REQUEST);
+        }
 
-        //TODO reverse the exception check
-        if ($tId != "kein_token") {
 
             $dataProvider = new TokenDataProvider();
 
@@ -45,7 +47,7 @@ class PermissionHandler implements HandlerInterface
 
             foreach ($tokens as $t) {
                 //TODO add strict checks
-                if ($t["token"] == $tId) {
+                if ($t["token"] == $requestToken) {
                     $token = $t;
                 }
             }
@@ -68,8 +70,6 @@ class PermissionHandler implements HandlerInterface
                 //TODO -
                 return new JSONResponse([], Response::HTTP_UNAUTHORIZED);
             }
-        } else {
-            return new JSONResponse([], Response::HTTP_BAD_REQUEST);
-        }
+
     }
 }
