@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Enum\Permission;
 use App\Provider\TokenDataProvider;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -83,6 +84,25 @@ class PermissionService
         if (false === in_array($token, $validTokens, true)) {
             throw new \RuntimeException(sprintf('%s is an unknown token!', $token));
         }
+    }
+
+    /**
+     * @param array $permissions
+     * @param string $checkType
+     * @return bool
+     */
+    public function hasAccess(array $permissions, string $checkType): bool
+    {
+        return in_array($checkType, $permissions, true);
+    }
+
+    /**
+     * @param array $permissions
+     * @return bool
+     */
+    public function hasReadAccess(array $permissions): bool
+    {
+        return $this->hasAccess($permissions, Permission::READ);
     }
 
 }

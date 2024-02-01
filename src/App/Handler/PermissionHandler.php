@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Handler;
 
 use App\Provider\TokenDataProvider;
+use App\Service\PermissionService;
 use App\Utils\Token;
 use ProgPhil1337\SimpleReactApp\HTTP\Response\JSONResponse;
 use ProgPhil1337\SimpleReactApp\HTTP\Response\ResponseInterface;
@@ -22,17 +23,14 @@ class PermissionHandler implements HandlerInterface
     /**
      * Dependency Injection would be available here
      */
-    public function __construct()
+    public function __construct(
+        private readonly PermissionService $permissionService
+    )
     {
     }
 
     public function __invoke(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface
     {
-        //TODO what is NP?
-        //TODO add constants
-        $np = "read";
-
-        //GET requested Token
         $requestToken = $parameters->get("token", Token::MISSING);
 
         if (Token::MISSING === $requestToken) {
@@ -52,24 +50,12 @@ class PermissionHandler implements HandlerInterface
             }
         }
 
-        foreach ($token["permissions"] as $p) {
-            //TODO add strict checks, descriptive properties names
-            if ($p == $np) {
-                //TODO initialize $a
-                $a = $a + 1;
-            }
+        $permissions = $token["permissions"] ?? [];
+
+        if ($this->permissionService->hasReadAccess($permissions)) {
+            return new JSONResponse($permissions, Response::HTTP_OK);
         }
 
-        //TODO $a could be undefined here
-        if ($a > 0) {
-
-            //TODO add common client response, set proper HTTP status codes, list permissions
-            $permission = [];
-            return new JSONResponse($permission, Response::HTTP_OK);
-        } else {
-            //TODO -
-            return new JSONResponse([], Response::HTTP_UNAUTHORIZED);
-        }
-
+        return new JSONResponse([], Response::HTTP_UNAUTHORIZED);
     }
 }
