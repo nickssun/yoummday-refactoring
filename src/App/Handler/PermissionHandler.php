@@ -21,7 +21,6 @@ class PermissionHandler implements HandlerInterface
      */
     public function __construct()
     {
-
     }
 
     public function __invoke(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface
